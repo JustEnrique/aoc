@@ -55,6 +55,8 @@ for (const line of split) {
         totalInvalids += i;
       }
     }
+    if (i.length > 3) {
+    }
   }
 }
 
