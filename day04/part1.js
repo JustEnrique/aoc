@@ -14,39 +14,39 @@ for (let i = 0; i < split.length; i++) {
   }
 }
 
-console.log("Board length: " + board.length);
-console.log("Col length: " + board[0].length);
-for (var row = 0; row < board.length; row++) {
-  for (var col = 0; col < board[row].length; col++) {
-    if (getAdjecents(row, col) < 4) {
-      accesibleRolls += 1;
+while (accesibleRolls > 0) {
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] == "@") {
+        if (getAdjecents(i, j) < 4) {
+          //swap paper with .
+          board[i][j] = ".";
+        }
+      }
     }
   }
 }
 
-function getAdjecents(posX, posY) {
+function getAdjecents(initialRow, initialCol) {
   let papersAdjecent = 0;
-
-  console.log("Position X: " + posX + " Position Y: " + posY);
-  for (let x = -1; x <= 1; x++) {
-    for (let y = -1; y <= 1; y++) {
-      const checkX = x + posX;
-      const checkY = y + posY;
-      //console.log("Checking x: " + checkX + " y " + checkY);
+  for (let row = -1; row <= 1; row++) {
+    for (let col = -1; col <= 1; col++) {
+      const checkCol = initialCol + col;
+      const checkRow = initialRow + row;
       if (
-        checkX < 0 ||
-        checkY < 0 ||
-        checkX >= board.length ||
-        checkY >= board[0].length
+        checkCol < 0 ||
+        checkRow < 0 ||
+        checkCol >= board[0].length ||
+        checkRow >= board.length ||
+        (checkCol == initialCol && checkRow == initialRow)
       ) {
         continue;
       }
-      if (board[checkX][checkY] == "@") {
-        papersAdjecent += 1;
+      if (board[checkRow][checkCol] == "@") {
+        papersAdjecent++;
       }
     }
   }
-  console.log("total surrounding " + papersAdjecent);
   return papersAdjecent;
 }
 
