@@ -4,6 +4,7 @@ const split = raw.split("\n");
 
 let board = [];
 let accesibleRolls = 0;
+let totalRemoved = 0;
 
 for (let i = 0; i < split.length; i++) {
   board[i] = [];
@@ -14,13 +15,28 @@ for (let i = 0; i < split.length; i++) {
   }
 }
 
-for (let i = 0; i < board.length; i++) {
-  for (let j = 0; j < board[i].length; j++) {
-    if (board[i][j] == "@") {
-      if (getAdjecents(i, j) < 4) {
-        accesibleRolls += 1;
+function doCheck() {
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] == "@") {
+        if (getAdjecents(i, j) < 4) {
+          accesibleRolls += 1;
+          board[i][j] = ".";
+          totalRemoved += 1;
+        }
       }
     }
+  }
+  //printBoard();
+  if (accesibleRolls > 0) {
+    accesibleRolls = 0;
+    doCheck();
+  }
+}
+
+function printBoard() {
+  for (let i = 0; i < board.length; i++) {
+    console.log(board[i].join(""));
   }
 }
 
@@ -47,4 +63,5 @@ function getAdjecents(initialRow, initialCol) {
   return papersAdjecent;
 }
 
-console.log(accesibleRolls);
+doCheck();
+console.log(totalRemoved);
