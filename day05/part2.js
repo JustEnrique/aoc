@@ -1,12 +1,11 @@
 import { readInput } from "../utils/input.js";
-const raw = readInput("../day05/input.txt");
-const split = raw.split("\n");
+const raw = readInput().split("\n");
 
 let coveredList = [];
 let checkList = [];
 let totalFresh = 0;
 
-for (let line of split) {
+for (let line of raw) {
   line = line.trim();
 
   if (line.includes("-")) {
@@ -23,7 +22,7 @@ coveredList.sort((a, b) => a - b);
 for (let i = 0; i < checkList.length - 1; i++) {
   const start = checkList[i];
   const end = checkList[i + 1];
-  for (let line of split) {
+  for (let line of raw) {
     line = line.trim();
 
     if (line.includes("-")) {

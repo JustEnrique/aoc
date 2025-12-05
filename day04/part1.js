@@ -1,14 +1,13 @@
 import { readInput } from "../utils/input.js";
-const raw = readInput("../day04/input.txt");
-const split = raw.split("\n");
+const raw = readInput().split("\n");
 
 let board = [];
 let accesibleRolls = 0;
 
-for (let i = 0; i < split.length; i++) {
+for (let i = 0; i < raw.length; i++) {
   board[i] = [];
   let count = 0;
-  for (let c of split[i].trim()) {
+  for (let c of raw[i].trim()) {
     board[i][count] = c;
     count++;
   }

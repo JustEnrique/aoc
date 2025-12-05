@@ -1,10 +1,9 @@
-import { lines, readInput } from "../utils/input.js";
+import { readInput } from "../utils/input.js";
 
-const raw = readInput("../day02/input.txt");
-const split = raw.split(",");
+const raw = readInput().split(",");
 let totalInvalids = 0;
 
-for (const line of split) {
+for (const line of raw) {
   const range = line.split("-");
   const startRange = parseInt(range[0]);
   const endRange = parseInt(range[1]);

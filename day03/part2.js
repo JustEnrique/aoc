@@ -1,10 +1,9 @@
 import { readInput } from "../utils/input.js";
-const raw = readInput("../day03/input.txt");
-const split = raw.split("\n");
+const raw = readInput().split("\n");
 
 let totalVoltage = 0;
 
-for (let line of split) {
+for (let line of raw) {
   line = line.trim();
   let digits = "";
   let digitsToFill = 12;

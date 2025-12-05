@@ -1,7 +1,6 @@
-import { readInput, lines } from "../utils/input.js";
+import { readInput } from "../utils/input.js";
 
-const raw = readInput("../day01/input.txt");
-const inputLines = lines(raw);
+const raw = readInput().split("\n");
 
 let zeroCounts = 0;
 let dialCount = 50;
@@ -25,7 +24,7 @@ function calculateNextPostion(direction, amount) {
   }
 }
 
-for (const line of inputLines) {
+for (const line of raw) {
   const direction = line[0];
   const amount = parseInt(line.slice(1));
   calculateNextPostion(direction, amount);

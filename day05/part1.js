@@ -1,17 +1,17 @@
 import { readInput } from "../utils/input.js";
-const raw = readInput("../day05/input.txt");
-const split = raw.split("\n");
+const raw = readInput().split("\n");
+
 let toCheck = [];
 let areFresh = [];
 
-for (let line of split) {
+for (let line of raw) {
   line = line.trim();
   if (line !== "" && !line.includes("-")) {
     toCheck.push(line);
   }
 }
 
-for (let line of split) {
+for (let line of raw) {
   line = line.trim();
 
   if (line.includes("-")) {

@@ -1,13 +1,12 @@
-import { readInput, lines } from "../utils/input.js";
+import { readInput } from "../utils/input.js";
 
-const raw = readInput("../day01/input.txt");
-const inputLines = lines(raw);
+const raw = readInput().split("\n");
 
 let pos = 50;
 let oldPos = 50;
 let count = 0;
 
-for (const line of inputLines) {
+for (const line of raw) {
   if (!line.trim()) continue;
   let steps = parseInt(line.slice(1), 10);
   count += Math.floor(steps / 100);
